@@ -1,0 +1,65 @@
+<script type="text/javascript">
+    function keyboardActions(){
+        let action = $('#node-input-action').val()
+        if(action === 'tap'){
+            $("#node-input-param1").prev().text('Key');
+            $("#node-input-param2").prev().text('Modifier/s');
+        }
+        else{
+            $("#node-input-param1").prev().text('String');
+            $("#node-input-param2").prev().text('cpm');
+        }
+        // else{
+        //     $("#node-input-param1").prev().text('Milli Sec.');
+        //     $("#node-input-param2").parent().hide();
+        // }
+    }
+
+    RED.nodes.registerType('keyboard',{
+        category: 'robotjs',
+        color: '#a6bbcf',
+        defaults: {
+            name: {value:""},
+            action:{value:"tap"},
+            param1: {value:""},
+            param2:{ value: ""}
+        },
+        inputs:1,
+        outputs:1,
+        icon: "font-awesome/fa-keyboard-o",
+        label: function() {
+            return this.name||"keyboard";
+        },
+        oneditprepare: function(){
+            keyboardActions();
+        }
+    });
+</script>
+
+<script type="text/html" data-template-name="keyboard">
+    <div class="form-row">
+        <label for="node-input-action"><i class="fa fa-tasks"></i> Action</label>
+      <select type="text" id="node-input-action" style="width:70%;" onchange="keyboardActions();">
+          <option value="tap">Key Tap</option>
+          <option value="type">Type String</option>
+      </select>
+    </div>
+
+    <div class="form-row">
+        <label for="node-input-param1"><i class="fa fa-tasks"></i> Key: </label>
+        <input type="text" id="node-input-param1">
+    </div>
+
+    <div class="form-row">
+        <label for="node-input-param2"><i class="fa fa-tasks"></i> Modifier/s</label>
+        <input type="text" id="node-input-param2" >
+    </div>
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+</script>
+
+<script type="text/html" data-help-name="keyboard">
+    <p>A simple node that converts the message payloads into all lower-case characters</p>
+</script>

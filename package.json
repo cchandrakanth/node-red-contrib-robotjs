@@ -2,7 +2,6 @@
   "name": "node-red-contrib-robotjs",
   "version": "1.0.0",
   "description": "nodes for keyboard, mouse and screen actions of robotjs",
-  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -11,14 +10,25 @@
     "url": "git+https://github.com/cchandrakanth/node-red-contrib-robotjs.git"
   },
   "keywords": [
-    "[\"Desktop\"",
-    "\"keyboard\"",
-    "\"mouse\"]"
+    "Desktop",
+    "keyboard",
+    "mouse"
   ],
+  "node-red": {
+    "nodes": {
+      "keyboard": "nodes/keyboard/keyboard.js",
+      "mouse": "nodes/mouse/mouse.js",
+      "screen": "nodes/screen/screen.js"
+    }
+  },
   "author": "chandrakanth.chintada@gmail.com",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/cchandrakanth/node-red-contrib-robotjs/issues"
   },
-  "homepage": "https://github.com/cchandrakanth/node-red-contrib-robotjs#readme"
+  "homepage": "https://github.com/cchandrakanth/node-red-contrib-robotjs#readme",
+  "dependencies": {
+    "jimp": "^0.16.1",
+    "robotjs": "^0.6.0"
+  }
 }

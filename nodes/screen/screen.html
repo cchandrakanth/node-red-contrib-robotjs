@@ -1,0 +1,68 @@
+<script type="text/javascript">
+    function screenActions(){
+        $("#node-input-path").parent().hide();
+        $("#node-input-param1").parent().hide();
+        $("#node-input-param2").parent().hide();
+        let action = $('#node-input-action').val();
+        if(action === 'screenshot'){
+            $("#node-input-path").parent().show();
+            $("#node-input-param1").parent().show();
+            $("#node-input-param2").parent().show();
+        }
+    }
+
+    RED.nodes.registerType('screen',{
+        category: 'robotjs',
+        color: '#a6bbcf',
+        defaults: {
+            name: {value:""},
+            action:{value:"color"},
+            path: {value: ""},
+            param1: {value:""},
+            param2:{ value: ""}
+        },
+        inputs:1,
+        outputs:1,
+        icon: "font-awesome/fa-desktop",
+        label: function() {
+            return this.name||"screen";
+        },
+        oneditprepare: function(){
+            screenActions();
+        }
+    });
+</script>
+
+<script type="text/html" data-template-name="screen">
+    <div class="form-row">
+        <label for="node-input-action"><i class="fa fa-tasks"></i> Action</label>
+      <select type="text" id="node-input-action" style="width:70%;" onchange="screenActions();">
+          <option value="color">Get Pixel Color</option>
+          <option value="size">Get Screen Size</option>
+          <option value="screenshot">Screenshot</option>
+      </select>
+    </div>
+
+    <div class="form-row">
+        <label for="node-input-path"><i class="fa fa-tasks"></i> File Path </label>
+        <input type="text" id="node-input-path">
+    </div>
+
+    <div class="form-row">
+        <label for="node-input-param1"><i class="fa fa-tasks"></i> From </label>
+        <input type="text" id="node-input-param1">
+    </div>
+
+    <div class="form-row">
+        <label for="node-input-param2"><i class="fa fa-tasks"></i> To</label>
+        <input type="text" id="node-input-param2" >
+    </div>
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+</script>
+
+<script type="text/html" data-help-name="screen">
+    <p>A simple node that converts the message payloads into all lower-case characters</p>
+</script>

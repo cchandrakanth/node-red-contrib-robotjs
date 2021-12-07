@@ -1,0 +1,74 @@
+<script type="text/javascript">
+    function mouseActions(){
+        $("#node-input-param1").parent().show();
+        $("#node-input-param2").parent().show();
+        let action = $('#node-input-action').val();
+        if(["click", "doubleClick","rightClick","getPosition"].includes(action)){
+            $("#node-input-param1").parent().hide();
+            $("#node-input-param2").parent().hide();
+        }
+        else if(["move","moveSmooth","scroll"].includes(action)){
+            $("#node-input-param1").prev().text('To');
+            $("#node-input-param2").parent().hide();
+        }
+        else{
+            $("#node-input-param1").prev().text('From');
+            $("#node-input-param2").prev().text('To');
+        }
+    }
+
+    RED.nodes.registerType('mouse',{
+        category: 'robotjs',
+        color: '#a6bbcf',
+        defaults: {
+            name: {value:""},
+            action:{value:"click"},
+            param1: {value:""},
+            param2:{ value: ""}
+        },
+        inputs:1,
+        outputs:1,
+        icon: "mouse.png",
+        label: function() {
+            return this.name||"mouse";
+        },
+        oneditprepare: function(){
+            mouseActions();
+        }
+    });
+</script>
+
+<script type="text/html" data-template-name="mouse">
+    <div class="form-row">
+        <label for="node-input-action"><i class="fa fa-tasks"></i> Action</label>
+      <select type="text" id="node-input-action" style="width:70%;" onchange="mouseActions();">
+        <option value="click">Click</option>
+        <option value="doubleClick">Double Click</option>
+        <option value="rightClick">Right Click</option>
+        <option value="getPosition">Get Position</option>
+        <option value="move">Mouse Move</option>
+        <option value="moveSmooth">Mouse Move Smooth</option>
+        <option value="dragDrop">Drag and Drop</option>
+        <option value="scroll">Scroll</option>
+      </select>
+    </div>
+
+    <div class="form-row">
+        <label for="node-input-param1"><i class="fa fa-tasks"></i> Key: </label>
+        <input type="text" id="node-input-param1" placeholder='{"x":0, "y": 0}'>
+    </div>
+
+    <div class="form-row">
+        <label for="node-input-param2"><i class="fa fa-tasks"></i> Modifier/s</label>
+        <input type="text" id="node-input-param2" placeholder='{"x":500, "y": 800}' >
+    </div>
+
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+</script>
+
+<script type="text/html" data-help-name="mouse">
+    <p>A simple node that converts the message payloads into all lower-case characters</p>
+</script>
