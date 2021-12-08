@@ -9,6 +9,13 @@
             $("#node-input-param1").parent().show();
             $("#node-input-param2").parent().show();
         }
+        else if(action === 'fullScreen'){
+            $("#node-input-path").parent().show();
+        }
+        else if(action === 'color'){
+            $("#node-input-param1").prev().text('At');
+            $("#node-input-param1").parent().show();
+        }
     }
 
     RED.nodes.registerType('screen',{
@@ -40,6 +47,7 @@
           <option value="color">Get Pixel Color</option>
           <option value="size">Get Screen Size</option>
           <option value="screenshot">Screenshot</option>
+          <option value="fullScreen">Full Screenshot</option>
       </select>
     </div>
 

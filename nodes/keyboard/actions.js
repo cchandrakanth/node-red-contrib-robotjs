@@ -4,7 +4,6 @@ const keyTap = async (node, msg) => {
     return new Promise( async (resolve, reject) => {
         try{
             let checkJSON = await isValidJSON(node.param2 || "")
-            console.log(checkJSON)
             node.param2? checkJSON ? await robot.keyTap(node.param1, JSON.parse(node.param2) ): await robot.keyTap(node.param1, node.param2): await robot.keyTap(node.param1)
             resolve()
         }
