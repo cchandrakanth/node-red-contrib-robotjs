@@ -72,5 +72,49 @@
 </script>
 
 <script type="text/html" data-help-name="screen">
-    <p>A simple node that converts the message payloads into all lower-case characters</p>
+    <h3>Performs basic screen actions.</h3>
+    <h3>Details</h3>
+        <dl class="message-properties">
+          <dt><code>Action</code>: <span class="property-type">string</span></dt>
+          <dd>Following are the actions:
+            <ul>
+                <li><code>Get Pixel Color</code></li>
+                <ul>
+                    <li>Accepts valid JSON for <code>param1</code>. Eg: {"x":100,"y":200} <code>NOT {x:100, y:100}</code></li>
+                    <li>Outputs hexadecimal color value as <code>msg.payload</code></li>
+                </ul>
+                <li><code>Get Screen Size</code></li>
+                <ul>
+                    <li>Outputs valid JSON as <code>msg.payload</code>. Eg: {"x":100,"y":200}</li>
+                </ul>
+                <li><code>Screenshot</code></li>
+                <ul>
+                    <li>Accepts <code>path</code> as string (.png preferable), <code>param1</code> and <code>param2</code> as valid JSON.</li>
+                    <li>Stores the screenshot in the given path.</li>
+                </ul>
+                <li><code>Full Screenshot</code></li>
+                <ul>
+                    <li>Accepts <code>path</code> as string (.png preferable).</li>
+                    <li>Stores the screenshot in the given path.</li>
+                </ul>
+            </ul>
+            <br>
+          </dd>
+
+          <dt><code>path</code><span class="property-type">string</span></dt>
+          <dd><ul>
+              <li>we can also send <code>msg.path</code> by leaving blank during node config</li>
+            </ul><br></dd>
+
+          <dt><code>param1</code><span class="property-type">JSON string</span></dt>
+          <dd><ul>
+              <li>we can also send <code>msg.param1</code> by leaving blank during node config</li>
+            </ul><br></dd>
+
+          <dt><code>param2</code><span class="property-type">JSON string</span></dt>
+          <dd><ul>
+            <li>we can also send <code>msg.param2</code> by leaving blank during node config</li>
+              </ul><br>
+            </dd>
+        </dl>
 </script>

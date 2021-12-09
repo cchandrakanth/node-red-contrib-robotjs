@@ -70,5 +70,47 @@
 </script>
 
 <script type="text/html" data-help-name="mouse">
-    <p>A simple node that converts the message payloads into all lower-case characters</p>
+    <h3>Performs basic mouse actions.</h3>
+    <h3>Details</h3>
+        <dl class="message-properties">
+          <dt><code>Action</code>: <span class="property-type">string</span></dt>
+          <dd>Following are the actions:
+            <ul>
+                <li><code>Click</code>: Performs left click at mouse position.</li>
+                <li><code>Double Click</code>: Performs double click at mouse position.</li>
+                <li><code>Right Click</code>: Performs right click at mouse position.</li>
+                <li><code>Get Position</code></li>
+                <ul>
+                    <li>Outputs valid JSON as <code>msg.payload</code> of mouse position. Eg: {"x":100,"y":200}</li>
+                </ul>
+                <li><code>Mouse Move</code></li>
+                <ul>
+                    <li>Accepts <code>param1</code> as valid JSON.  Eg: {"x":100,"y":200} <code>NOT {x:100, y:200}</code></li>
+                    <li>Moves mouse to the given position.</li>
+                </ul>
+                <li><code>Mouse Move Smooth</code></li>
+                <ul>
+                    <li>Accepts <code>param1</code> as valid JSON.  Eg: {"x":100,"y":200} <code>NOT {x:100, y:200}</code></li>
+                    <li>Moves mouse to the given position slowly.</li>
+                </ul>
+                <li><code>Drag and Drop</code></li>
+                <ul>
+                    <li>Accepts <code>param1</code> and <code>param2</code> as valid JSON.  Eg: {"x":100,"y":200}</code></li>
+                    <li>Drag element or mouse from "From" position to "To".</li>
+                </ul>
+            </ul>
+            <br>
+          </dd>
+
+          <dt><code>param1</code><span class="property-type">JSON string</span></dt>
+          <dd><ul>
+              <li>we can also send <code>msg.param1</code> by leaving blank during node config</li>
+            </ul><br></dd>
+
+          <dt><code>param2</code><span class="property-type">JSON string</span></dt>
+          <dd><ul>
+            <li>we can also send <code>msg.param2</code> by leaving blank during node config</li>
+              </ul><br>
+            </dd>
+        </dl>
 </script>
