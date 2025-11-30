@@ -29,7 +29,7 @@
   },
   "homepage": "https://github.com/cchandrakanth/node-red-contrib-robotjs#readme",
   "dependencies": {
-    "jimp": "^0.16.1",
+    "jimp": "^1.6.0",
     "robotjs": "^0.6.0"
   }
 }
